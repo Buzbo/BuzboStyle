@@ -34,11 +34,11 @@ tasks:
                 BACKGROUND_COLOR: "#f3eac0"
             GEOMETRY:
               - SIZE: 64
-                PADDING: 2
-              - SIZE: 128
                 PADDING: 4
-              - SIZE: 256
+              - SIZE: 128
                 PADDING: 8
+              - SIZE: 256
+                PADDING: 16
               - SIZE: 512
                 PADDING: 32
         cmd: >
