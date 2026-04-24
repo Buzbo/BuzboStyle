@@ -8,8 +8,10 @@ tasks:
       - for:
           matrix:
             THEME:
-              - light
-              - dark
+              - white
+              - black
+              - white-on-black
+              - black-on-white
             GEOMETRY:
               - SIZE: 64
                 PADDING: 2
