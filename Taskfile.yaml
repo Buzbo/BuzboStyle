@@ -8,14 +8,30 @@ tasks:
       - for:
           matrix:
             THEME:
-              - white
-              - black
-              - crimson
-              - beige
-              - orange
-              - white-on-black
-              - black-on-white
-              - crimson-on-beige
+              - NAME: white
+                STYLE: white
+                BACKGROUND_COLOR: none
+              - NAME: black
+                STYLE: black
+                BACKGROUND_COLOR: none
+              - NAME: crimson
+                STYLE: crimson
+                BACKGROUND_COLOR: none
+              - NAME: beige
+                STYLE: beige
+                BACKGROUND_COLOR: none
+              - NAME: orange
+                STYLE: orange
+                BACKGROUND_COLOR: none
+              - NAME: white-on-black
+                STYLE: white
+                BACKGROUND_COLOR: black
+              - NAME: black-on-white
+                STYLE: black
+                BACKGROUND_COLOR: white
+              - NAME: crimson-on-beige
+                STYLE: crimson
+                BACKGROUND_COLOR: "#f3eac0"
             GEOMETRY:
               - SIZE: 64
                 PADDING: 2
@@ -33,6 +49,7 @@ tasks:
           --page-height={{.ITEM.GEOMETRY.SIZE}}
           --width={{div (sub .ITEM.GEOMETRY.SIZE (mul .ITEM.GEOMETRY.PADDING 2)) 2}}
           --height={{sub .ITEM.GEOMETRY.SIZE (mul .ITEM.GEOMETRY.PADDING 2)}}
-          --stylesheet=src/{{.ITEM.THEME}}.css
+          --stylesheet=src/{{.ITEM.THEME.STYLE}}.css
+          --background-color={{.ITEM.THEME.BACKGROUND_COLOR}}
           src/buzbo-logo.svg
-          > artifacts/buzbo-logo-{{.ITEM.GEOMETRY.SIZE}}-{{.ITEM.THEME}}.png
+          > artifacts/buzbo-logo-{{.ITEM.GEOMETRY.SIZE}}-{{.ITEM.THEME.NAME}}.png
