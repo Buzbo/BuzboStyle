@@ -9,6 +9,8 @@ jobs:
     permissions:
       contents: write
     steps:
+      - run: sudo apt update
+      - run: sudo apt install librsvg2-bin
       - uses: go-task/setup-task@v1
         with:
           version: "3.50"
