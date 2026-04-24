@@ -1,0 +1,32 @@
+version: "3"
+
+tasks:
+  generate:logo:
+    run: once
+    cmds:
+      - mkdir -p artifacts
+      - for:
+          matrix:
+            THEME:
+              - light
+              - dark
+            GEOMETRY:
+              - SIZE: 64
+                PADDING: 2
+              - SIZE: 128
+                PADDING: 4
+              - SIZE: 256
+                PADDING: 8
+              - SIZE: 512
+                PADDING: 32
+        cmd: >
+          rsvg-convert
+          --left={{div (sub .ITEM.GEOMETRY.SIZE ( div (sub .ITEM.GEOMETRY.SIZE (mul .ITEM.GEOMETRY.PADDING 2)) 2 )) 2}}
+          --top={{div (sub .ITEM.GEOMETRY.SIZE ( sub .ITEM.GEOMETRY.SIZE (mul .ITEM.GEOMETRY.PADDING 2) )) 2}}
+          --page-width={{.ITEM.GEOMETRY.SIZE}}
+          --page-height={{.ITEM.GEOMETRY.SIZE}}
+          --width={{div (sub .ITEM.GEOMETRY.SIZE (mul .ITEM.GEOMETRY.PADDING 2)) 2}}
+          --height={{sub .ITEM.GEOMETRY.SIZE (mul .ITEM.GEOMETRY.PADDING 2)}}
+          --stylesheet=src/{{.ITEM.THEME}}.css
+          src/buzbo-logo.svg
+          > artifacts/buzbo-logo-{{.ITEM.GEOMETRY.SIZE}}-{{.ITEM.THEME}}.png
