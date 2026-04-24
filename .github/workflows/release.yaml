@@ -1,0 +1,19 @@
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  publish-logo:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: go-task/setup-task@v1
+        with:
+          version: "3.50"
+      - uses: actions/checkout@v4
+      - run: >
+          task generate:logo
+      - run: >
+          gh release upload "${{ github.ref_name }}" artifacts/*

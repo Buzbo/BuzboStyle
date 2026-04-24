@@ -1,0 +1,3 @@
+buzbo
+magick
+rsvg

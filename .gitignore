@@ -1,0 +1,18 @@
+# files
+
+.*
+
+# files exceptions
+
+!.gitignore
+!.editorconfig
+
+# directories
+
+node_modules/
+artifacts/
+
+# directories exceptions
+
+!.vscode/
+!.github/
