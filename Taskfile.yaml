@@ -10,8 +10,12 @@ tasks:
             THEME:
               - white
               - black
+              - crimson
+              - beige
+              - orange
               - white-on-black
               - black-on-white
+              - crimson-on-beige
             GEOMETRY:
               - SIZE: 64
                 PADDING: 2
